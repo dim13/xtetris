@@ -247,8 +247,7 @@ static struct {
 /* ------------------------------------------------------------------ */
 
 int
-nrand(n)
-    int             n;
+nrand(int n)
 {
     return (int) (LRAND() % n);
 }
@@ -256,8 +255,7 @@ nrand(n)
 /* ------------------------------------------------------------------ */
 
 unsigned long
-getColor(name)
-    char            name[];
+getColor(char name[])
 {
     XColor          tmp;
 
@@ -278,9 +276,7 @@ getColor(name)
 /* ------------------------------------------------------------------ */
 
 void
-inits(argc, argv)
-    int             argc;
-    char           *argv[];
+inits(int argc, char *argv[])
 {
     XSetWindowAttributes att;
     unsigned int    attvm;
@@ -452,7 +448,7 @@ inits(argc, argv)
 /* ------------------------------------------------------------------ */
 
 void
-newThing()
+newThing(void)
 {
     curThing = nextThing;
     nextThing = possible[nrand(range)][nrand(4)];
@@ -464,7 +460,7 @@ newThing()
 /* ------------------------------------------------------------------ */
 
 void
-drawTitle()
+drawTitle(void)
 {
     XDrawString(display, mainWin, bigGC,
 	titleX, titleY, MSG_TITLE, titleLen);
@@ -475,7 +471,7 @@ drawTitle()
 /* ------------------------------------------------------------------ */
 
 void
-drawStatus()
+drawStatus(void)
 {
     char            buf[30];
 
@@ -492,9 +488,7 @@ drawStatus()
 /* ------------------------------------------------------------------ */
 
 void
-drawBox(win, pmid, cid, x, y)
-    Window          win;
-    int             pmid, cid, x, y;
+drawBox(Window win, int pmid, int cid, int x, int y)
 {
     XCopyPlane(display, pms[pmid], win, thingGCs[cid], 0, 0,
 	BOXSIZE, BOXSIZE, x, y, (unsigned long) 1);
@@ -503,8 +497,7 @@ drawBox(win, pmid, cid, x, y)
 /* ------------------------------------------------------------------ */
 
 static void
-clearBox(x, y)
-    int             x, y;
+clearBox(int x, int y)
 {
     XFillRectangle(display, blockWin, revGC, x, y, BOXSIZE, BOXSIZE);
 }
@@ -512,7 +505,7 @@ clearBox(x, y)
 /* ------------------------------------------------------------------ */
 
 void
-drawField()
+drawField(void)
 {
     int             i, j;
 
@@ -526,7 +519,7 @@ drawField()
 /* ------------------------------------------------------------------ */
 
 void
-drawThing()
+drawThing(void)
 {
     int             i, j;
 
@@ -541,8 +534,7 @@ drawThing()
 /* ------------------------------------------------------------------ */
 
 void
-drawThingDiff(old)
-    thing_t        *old;
+drawThingDiff(thing_t *old)
 {
     int             i, j, ox, oy;
 
@@ -568,7 +560,7 @@ drawThingDiff(old)
 /* ------------------------------------------------------------------ */
 
 void
-drawNext()
+drawNext(void)
 {
     int             x, y;
     int             i, j;
@@ -585,7 +577,7 @@ drawNext()
 /* ------------------------------------------------------------------ */
 
 void
-clearNext()
+clearNext(void)
 {
     XFillRectangle(display, mainWin, revGC,
 	topMidX, topMidY - BOXSIZE * 2, topRWidth, BOXSIZE * 4);
@@ -594,8 +586,7 @@ clearNext()
 /* ------------------------------------------------------------------ */
 
 void
-banner(msg)
-    char            msg[];
+banner(char msg[])
 {
     int             mlen = strlen(msg);
     int             w = XTextWidth(bigFont, msg, mlen);
@@ -611,7 +602,7 @@ banner(msg)
 /* ------------------------------------------------------------------ */
 
 void
-putBox()
+putBox(void)
 {
     int             i, j;
     int             x = curThing.xpos, y = curThing.ypos;
@@ -627,7 +618,7 @@ putBox()
 /* ------------------------------------------------------------------ */
 
 Bool
-overlapping()
+overlapping(void)
 {
     int             i, j;
     int             x = curThing.xpos, y = curThing.ypos;
@@ -647,7 +638,7 @@ overlapping()
 /* ------------------------------------------------------------------ */
 
 Bool
-atBottom()
+atBottom(void)
 {
     int             i, j;
     int             x = curThing.xpos, y = curThing.ypos;
@@ -667,8 +658,7 @@ atBottom()
 /* ------------------------------------------------------------------ */
 
 void
-tryMove(move)
-    move_t          move;
+tryMove(move_t move)
 {
     thing_t         old;
     Bool            canMove = False;
@@ -732,7 +722,7 @@ tryMove(move)
 /* ------------------------------------------------------------------ */
 
 int
-checkLines()
+checkLines(void)
 {
     int             lSet[ROWS], nset = 0;
     int             i, j, y;
@@ -810,8 +800,7 @@ checkLines()
 /* ------------------------------------------------------------------ */
 
 void
-realTime(tv)
-    struct timeval *tv;
+realTime(struct timeval *tv)
 {
     while (tv->tv_usec < 0) {
 	tv->tv_sec --;

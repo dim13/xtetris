@@ -83,16 +83,14 @@ static XrmOptionDescRec opTable[] = {
 };
 static XrmDatabase cmmDB = (XrmDatabase) NULL, rDB = (XrmDatabase) NULL;
 
-static void parseOpenDisp();
-static void Usage();
-static void getDefaults();
+static void parseOpenDisp(int *, char *[]);
+static void Usage(char *);
+static void getDefaults(void);
 
 /* ------------------------------------------------------------------ */
 
-void
-main(argc, argv)
-    int             argc;
-    char           *argv[];
+int
+main(int argc, char *argv[])
 {
     (void) fprintf(stderr,
 		   "                 GENERIC TETRIS %s\n", VERSION);
@@ -110,14 +108,13 @@ main(argc, argv)
     inits(argc, argv);
     playing();
     /* never come to here */
+    return 0;
 }
 
 /* ------------------------------------------------------------------ */
 
 static void
-parseOpenDisp(argc, argv)
-    int            *argc;
-    char           *argv[];
+parseOpenDisp(int *argc, char *argv[])
 {
     struct passwd  *pw;
     XrmValue        value;
@@ -200,8 +197,7 @@ parseOpenDisp(argc, argv)
 /* ------------------------------------------------------------------ */
 
 static void
-Usage(argv0)
-    char           *argv0;
+Usage(char *argv0)
 {
     (void) fprintf(stderr,
 	"Usage: %s [-s] [-l <starting level>]\n", argv0);
@@ -220,7 +216,7 @@ Usage(argv0)
 /* ------------------------------------------------------------------ */
 
 static void
-getDefaults()
+getDefaults(void)
 {
     XrmDatabase     homeDB, serverDB, appDB;
     char            filenamebuf[FILENAMELEN];
@@ -422,8 +418,8 @@ getDefaults()
 
     if (XrmGetResource(rDB, "tetris.playerName", "Tetris.PlayerName",
 		       str_type, &value) == True) {
-	(void) strncpy(myscore.myname, value.addr, ZLIM(value.size, 20));
-	myscore.myname[19] = '\0';
+	(void) strncpy(myscore.myname, value.addr, ZLIM(value.size, NAMELEN));
+	myscore.myname[NAMELEN - 1] = '\0';
     }
 
     /* score file */

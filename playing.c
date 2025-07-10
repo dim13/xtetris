@@ -41,12 +41,12 @@ static int      newrows = 0;
 static struct timeval nextFall, now, delay, oldsample;
 static struct timezone tzone = {0, 0};
 
-static Bool     moveOne();
+static Bool     moveOne(move_t);
 
 /* ------------------------------------------------------------------ */
 
 void
-playing()
+playing(void)
 {
     Bool            resetTime = True;
     int             conNum = ConnectionNumber(display);
@@ -134,8 +134,7 @@ playing()
 /* ------------------------------------------------------------------ */
 
 Bool
-evGotNewThing(falldown)
-    Bool            falldown;
+evGotNewThing(Bool falldown)
 {
     XEvent          ev;
     Bool            gotNew = False, flag;
@@ -305,7 +304,7 @@ evGotNewThing(falldown)
 /* ------------------------------------------------------------------ */
 
 void
-redrawAll()
+redrawAll(void)
 {
     drawTitle();
     drawStatus();
@@ -318,8 +317,7 @@ redrawAll()
 /* ------------------------------------------------------------------ */
 
 static Bool
-moveOne(move)
-    move_t          move;
+moveOne(move_t move)
 {
     int             lines;
 
@@ -362,7 +360,7 @@ moveOne(move)
 /* ------------------------------------------------------------------ */
 
 static void
-addScore()
+addScore(void)
 {
     time_t          tloc;
     char            buff[2][SCORESIZE];
@@ -447,7 +445,7 @@ addScore()
 /* ------------------------------------------------------------------ */
 
 void
-gameOver()
+gameOver(void)
 {
     int             i, j;
 
@@ -473,8 +471,7 @@ gameOver()
 /* ------------------------------------------------------------------ */
 
 void
-showScores(num)
-    int             num;
+showScores(int num)
 {
     int             fd, i = 0;
     score_t         curs;

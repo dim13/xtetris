@@ -42,7 +42,7 @@
 #ifndef	X_NOT_STDC_ENV
 #include	<stdlib.h>
 #else
-extern char    *getenv(
+char    *getenv(
 #if	NeedFunctionPrototypes
     char *
 #endif
@@ -50,12 +50,12 @@ extern char    *getenv(
 #endif
 
 #ifdef	X_NOT_POSIX
-extern int      getuid(
+int      getuid(
 #if	NeedFunctionPrototypes
     void
 #endif
 );
-extern struct passwd *getpwuid(
+struct passwd *getpwuid(
 #if	NeedFunctionPrototypes
     int
 #endif
@@ -85,7 +85,7 @@ extern struct passwd *getpwuid(
 #if	defined(HAS_48)		/* Use lrand48() and srand48() */
 #define	LRAND()		lrand48()
 #define	SRAND(X)	srand48((long) (X))
-extern long     lrand48(
+long     lrand48(
 #if	NeedFunctionPrototypes
     void
 #endif
@@ -96,7 +96,7 @@ extern long     lrand48(
 
 #define	LRAND()		random()
 #define	SRAND(X)	srandom((unsigned int) (X))
-extern long     random(
+long     random(
 #if	NeedFunctionPrototypes
     void
 #endif
@@ -171,55 +171,55 @@ typedef struct {
 
 /*** variables defined in "tetris.c" ***/
 
-extern Display *display;
-extern int      screen_num;
-extern Visual  *visual;
-extern Bool     useColor;
-extern Bool     use3D;
-extern Colormap colormap;
-extern Window   mainWin, blockWin;
-extern Cursor   theCursor;
-extern XFontStruct *bigFont, *tinyFont;
-extern unsigned long fg, bg;
+Display *display;
+int      screen_num;
+Visual  *visual;
+Bool     useColor;
+Bool     use3D;
+Colormap colormap;
+Window   mainWin, blockWin;
+Cursor   theCursor;
+XFontStruct *bigFont, *tinyFont;
+unsigned long fg, bg;
 
-extern XSizeHints sizehints, iconsizehints;
-extern XWMHints wmhints;
+XSizeHints sizehints, iconsizehints;
+XWMHints wmhints;
 
-extern char     myHome[FILENAMELEN], scorefile[FILENAMELEN];
-extern int      startlevel, level, prefilled, score, rows, range, rotOffset;
-extern Bool     showNext, beep, bonusMode;
-extern score_t  myscore;
+char     myHome[FILENAMELEN], scorefile[FILENAMELEN];
+int      startlevel, level, prefilled, score, rows, range, rotOffset;
+Bool     showNext, beep, bonusMode;
+score_t  myscore;
 
 /*** variables defined in "utils.c" ***/
 
-extern Atom     delw;
+Atom     delw;
 
 /*** variables defined in "playing.c" ***/
 
 /*** functions ***/
 
-extern unsigned long getColor();
-extern void     showScores();
-extern void     inits();
-extern void     playing();
-extern void     realTime();
-extern void     newThing();
-extern Bool     evGotNewThing();
-extern void     redrawAll();
-extern void     drawTitle();
-extern void     drawStatus();
-extern void     drawField();
-extern void     drawThing();
-extern void     drawThingDiff();
-extern void     drawNext();
-extern void     gameOver();
-extern void     banner();
-extern void     clearNext();
-extern void     putBox();
-extern void     tryMove();
-extern Bool     atBottom();
-extern Bool     overlapping();
-extern int      checkLines();
-extern void     drawBox();
-extern int      nrand();
+unsigned long getColor(char []);
+void     showScores(int);
+void     inits(int, char *[]);
+void     playing(void);
+void     realTime(struct timeval *);
+void     newThing(void);
+Bool     evGotNewThing(Bool);
+void     redrawAll(void);
+void     drawTitle(void);
+void     drawStatus(void);
+void     drawField(void);
+void     drawThing(void);
+void     drawThingDiff(thing_t *);
+void     drawNext(void);
+void     gameOver(void);
+void     banner(char []);
+void     clearNext(void);
+void     putBox(void);
+void     tryMove(move_t);
+Bool     atBottom(void);
+Bool     overlapping(void);
+int      checkLines(void);
+void     drawBox(Window, int, int, int, int);
+int      nrand(int);
 
