@@ -1,0 +1,142 @@
+.TH TETRIS 6 "21 Feb 94, V3.1" "Georgia Tech"
+.SH NAME
+GENERIC TETRIS \- Yet Another Tetris Game on X
+.SH SYNOPSIS
+.B tetris
+[-s] [-l <start level>] [-p <prefilled lines>] [-showNext] [-beep]
+[-plain] [-u <name>] [-rightrotation] [-scorefile <filename>]
+[-display <display>] [-geometry <geometry>] [-iconGeometry <geometry>]
+[-{background | bg} <color>] [-{foreground | fg} <color>] [-bigFont
+<font>] [-tinyFont <font>] [-xrm <resource specification>]
+.SH DESCRIPTION
+.LP
+This is a game of "\fITetris\fP" for the X Window System.
+.LP
+The program lists the top 15 players at the end, each player may has at
+most three scores. With the option \fB\-s\fP, it shows all the players
+and scores.
+.LP
+Key "\fBj\fP" moves the block left, "\fBl\fP" moves right,
+"\fBk\fP" rotates. Left-handed people may want to use "\fBs\fP",
+"\fBd\fP", "\fBf\fP" respectively. Or maybe someone wants to try the
+arrow keys...  The space bar drops a block quickly. Use "\fBCTRL-L\fP"
+key combination to redraw \- in case the program messes somthing up.
+.LP
+The "\fB+\fP" key speed up or lower down the speed.  To avoid cheating
+there is no way to slow down at run-time.  The "\fBb\fP" key toggles
+"beep", and "\fBn\fP" toggles "show next".
+.LP
+If you press "\fBp\fP", the game will be paused, and the window
+will be iconified \- just in case your boss suddenly appears at your
+door ;o). When the tetris window loses its focus, it also goes to
+"paused" mode except it doesn't iconify itself.
+.LP
+To get high scores, don't use "show next" mode, try starting at a
+higher level and try to let "tetris" eat more than one line at a time.
+Play \fIfast\fP and see how well you can do in the \fIbonus\fP mode
+(what is that? ;-). Warning: some blocks in the bonus mode will rotate
+differently than you would expect.
+.SH OPTIONS
+.PP
+.TP 8
+.B \-s
+.br
+This option lets the program only list all the recorded scores then exit.
+.TP 8
+.B \-l \fIlevel\fP
+.br
+This option starts the program at the specified level (resource name
+"\fIstartLevel\fP").
+.TP 8
+.B \-p \fIlines\fP
+.br
+This option indicates that the program should start with some of the lines
+being randomly filled (resource name "\fIpreFilledLines\fP").
+.TP 8
+.B \-showNext
+.br
+This option tells the program start in "show next" mode (resource name
+"\fIshowNext\fP").
+.TP 8
+.B \-beep
+.br
+This option turns the sound on (resource name "\fIbeep\fP").
+.TP 8
+.B \-plain
+.br
+Uses the old "plain" bitmaps instead of the default 3D ones (resource
+name "\fIplain\fP").
+.TP 8
+.B \-u \fIname\fP
+.br
+This option sets an alternative player name (resource name
+"\fIplayerName\fP").
+.TP 8
+.B \-rightrotation
+Usually the rotation key rotates a piece to the left. Setting this
+option makes it rotate to the right (resource name "\fIrightRotation\fP").
+.TP 8
+.B \-scorefile \fIfilename\fP
+Specify an alternative score file (resource name "\fIscoreFile\fP").
+.TP 8
+.B \-display \fIhost\fP:\fIdpy\fP
+.br
+This option specifies the X server to contact.
+.TP 8
+.B \-geometry {+|\-}\fIX\fP{+|\-}\fIY\fP
+.br
+This option sets the initial position of the tetris window (resource
+name "\fIgeometry\fP").
+.TP 8
+.B \-iconGeometry {+|\-}\fIX\fP{+|\-}\fIY\fP
+.br
+This option sets the position of the icon (resource name "\fIiconGeometry\fP").
+.TP 8
+.B \-{background | bg} \fIcolor\fP
+.br
+This option specifies the background of the tetris window (resource name
+"\fIbackground\fP").
+.TP 8
+.B \-{foreground | fg} \fIcolor\fP
+.br
+This option specifies the foreground of the tetris window (resource name
+"\fIforeground\fP").
+.TP 8
+.B \-bigFont \fIfont\fP
+.br
+This option sets the font used in drawing titles and important messages
+(resource name "\fIbigFont\fP").
+.TP 8
+.B \-tinyFont \fIfont\fP
+.br
+This option sets the font used in drawing status information
+(resource name "\fItinyFont\fP").
+.TP 8
+.B \-xrm <\fIresource specification\fP>
+.br
+Another method of specifying preferences.
+.PP
+.SH SEE ALSO
+.LP
+X(1), xtetris(1), xmris(1)
+.SH COPYRIGHTS
+.LP
+\*R Copyright 1992-95, Q. Alex Zhao, <\fIazhao@cc.gatech.edu\fP>.
+.SH BUG REPORTS AND PROGRAM UPDATES
+.LP
+Send bug reports (or fixes) to the author:
+.RS
+Q. Alex Zhao,	<\fIazhao@cc.gatech.edu\fP>
+.br
+College of Computing
+.br
+Georgia Institute of Technology
+.br
+Atlanta, GA 30332-0280
+.RE
+.LP
+The most updated source could be found on \fIftp.x.org\fP under
+\fI/contrib\fP.
+.SH ACKNOWLEDGEMENTS
+.LP
+Thanks go to people who helped me in improving the program.

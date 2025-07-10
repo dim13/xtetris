@@ -1,0 +1,141 @@
+  [Oct 11, 95]	V3.2.0 --
+
+	Disabled run-time level switching to lower levels.  Some
+	adjustments in score calculation.
+
+  [Feb 21, 95]	V3.1.2 --
+
+  	Minor bug-fix release.
+
+  [Feb  3, 94]	V3.1.1 --
+
+	Fixed a scorefile checking problem suggested by Richard
+	Huveneers <huveneer@math.ruu.nl>.
+
+	Changed to use regular (normal) "select"...
+
+	Enforced bonus mode so it would be hard to get high scores for
+	players who use intensive pausing. As brought up by Herbert
+	Ruessink <Herbert.A.Ruessink@let.ruu.nl, Henrik Lautrup
+	<u930550@daimi.aau.dk>, and many other people.
+
+  [Sep  1, 93]	V3.1.0 --
+
+	Forget about R4, use R5 "XCOMM" in Imakefile. Suggested by
+	DaviD W. Sanderson <dws@ssec.wisc.edu>.
+
+	Option to set which score file to use.
+
+	Option to set the basic rotation direction.
+
+	Minor improvements...
+
+  [Aug 24, 93]	V3.0.1 --
+
+	utils.c, checkUp and checkDown for the new bitmap #15.
+
+	tetris.c, size hints.
+
+  [Aug 22, 93]	V3.0.0 --
+
+	In general: added a "bonus mode" inspired by an unofficial
+	patch from David Bagley <bagleyd@source.asset.com>.
+
+	Imakefile, "SYS_LIBRARIES" changed to include "$(XLIB)".
+	Suggested by Dr. Horst Spandl <spandl@uisu00.lfu-bw.de>.
+
+	tetris.c, correct resource lookup for "startLevel",
+	"preFilledLines", "showNext", and "beep". Suggested by Reuben
+	Worley <reuben@bugs.merit-tech.com>.
+
+	playing.c, destroying window before closing connection.
+	Suggested by Elwood C. Downey <ecdowney@hwking.cca.cr.rockwell.com>.
+
+	utils.c, tetris.c, brought back the old "plain" bitmaps.
+	Suggested by David W. Sanderson <dws@ssec.wisc.edu>.
+
+	utils.c, better rotation (looks more "natural"). Suggested by
+	Alberto Hernandez <alberto@TITAN.tid.es>.
+
+	Many minor changes...
+
+  [Feb 27, 93]  V2.1.4: HP time structure problem resulting "hanging
+		blocks". By Marcus Leech <mleech@bnr.ca>. New set of
+		bitmaps contributed by Atsuhiko Yamanaka
+		<yamanaka@ecip.tohoku.ac.jp>.
+
+  [Jan 21, 93]  V2.1.3: Two bugs in finding user environment:
+		"endpwent()" by Jari Tavi <jpt@rixrax.enet.dec.com>;
+		"gethostname()" by Johan Vromans <jv@mh.nl>. Added two
+		more arrow keys.
+
+  [Jan 19, 93]  V2.1.2: Improved "paused" mode - so it won't take too
+		much CPU time - suggested by Philip JENNINGS
+		<P.Jennings@frcl.bull.fr>.
+
+  [Jan 18, 93]  V2.1.1: Fixed a resource look-up bug found by Peter
+		Kabal <kabal@inrs-telecom.uquebec.ca>, and Imakefile
+		problem found by Tong Zhou <tzhou@cse.ogi.edu>.
+
+  [Jan 15, 93]  V2.1.0: Fixed a resource look-up bug found by Kiyotaka
+		Sakai <ksakai@mtl.t.u-tokyo.ac.jp>. Added "-u" option.
+		New feature: when a row is deleted, remaining blocks
+		remains rounded -- suggested by Elwood C. Downey
+		<ecdowney@hwking.cca.cr.rockwell.com> and Bill Leue
+		<leue@crd.ge.com>.
+
+  [Jan 12, 93]  V2.0.1: added arrow keys. Changed error handling method
+		in locking score file, suggested by Hellmut Golde
+		<golde@cs.washington.edu>.
+
+  [Jan 10, 93]  V2.0.0: Complete rewrite. Enhanced layout. Added
+		resource management and "next piece". Changes made for
+		Sony workstations, suggested by Masato Ogawa
+		<ogawa@sm.sony.co.jp>. Included four X11 header files
+		in case some system doesn't have them. Fixed block
+		clearing bug found by Benjamin Kroop
+		<bkroop@sunlab.cit.cornell.edu>.
+
+    Since the days of V1.8, I have got many responses over the net.
+    Thanks go to people who helped me in improving the program.
+
+  [Nov 13, 92]  Black Friday -- V1.8.1: numerious minor changes. Made
+		score listing built in.
+
+  [Oct 08, 92]  V1.8: Corrected some typos, <herbison@erlang.enet.dec.com>.
+		Added man-page.  Gregg Townsend <gmt@cs.arizona.edu>
+		provided hints for some problems on HP-UX. Imakefile.
+		Richard van Denzel suggest modifications for HP-UX.
+
+  [Sep 30, 92]	V1.7: Richard van Denzel <raet-sh!richard@relay.nluug.nl>
+		reported bugs on HP-UX 8.0.
+
+  [Sep 27, 92]  V1.6: Changed speed coefficients. Improved window
+		manager hints. Several rows at once worth more points.
+
+  [Sep 25, 92]  V1.5: HP-UX fixes by "Richard van Denzel"
+		<raet-sh!richard@relay.nluug.nl>. Added 'b' to toggle
+		"beep". Rewrote window creation/initialization to fix
+		the "losing input focus" problem.
+
+  [Sep 24, 92]  V1.4: Added <sys/select.h> and -lbsd for AIX (by "Daryl
+		Green" <darylg@amex-trs.com>).
+
+  [Sep 23, 92]  V1.3: Scoring -- a line in a higher level worth more
+		points; "tscores" program. Submitted to
+		comp.sources.games (volumn 15, issues 1-2; it has
+		nothing to do with GNU, but it was called "gtetris",
+		pronounced as "Gee, tetris", by the newsgroup
+		moderator).
+
+  [Sep ??, 92]  First set of versions, 1.0 through 1.2 -- developed and
+		tested at the University of Arizona. Put on
+		export.lcs.mit.edu.
+
+		I studied an old tetris game for X10, wrote by Wayne
+		Christopher <faustus@cs.berkeley.edu> in 1988; then I
+		adopted the ideas in representing those "blocks" and
+		rotating them, and added X11 stuff.  Also I learned a
+		lot from Nathan Sidwell's great game "xmris", e.g.  the
+		"iconifying pause".
+

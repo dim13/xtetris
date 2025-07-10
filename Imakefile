@@ -1,0 +1,53 @@
+XCOMM GENERIC X-WINDOW-BASED TETRIS
+XCOMM
+XCOMM	Imakefile
+XCOMM
+XCOMM ##
+XCOMM
+XCOMM  Copyright (C) 1992 - 95              Q. Alex Zhao, azhao@cc.gatech.edu
+XCOMM
+XCOMM			All Rights Reserved
+XCOMM
+XCOMM  Permission to use, copy, modify, and distribute this software and
+XCOMM  its documentation for any purpose and without fee is hereby granted,
+XCOMM  provided that the above copyright notice appear in all copies and
+XCOMM  that both that copyright notice and this permission notice appear in
+XCOMM  supporting documentation, and that the name of the author not be
+XCOMM  used in advertising or publicity pertaining to distribution of the
+XCOMM  software without specific, written prior permission.
+XCOMM
+XCOMM  This program is distributed in the hope that it will be "playable",
+XCOMM  but WITHOUT ANY WARRANTY; without even the implied warranty of
+XCOMM  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+XCOMM
+
+SCOREFILE	= /users/a/azhao/pub/.tetris/.tetris.scores
+
+XCOMM Set "RANDOM" to:
+XCOMM	-DHAS_48	if has lrand48() and srand48()
+XCOMM	-DHAS_RANDOM	if has random() and srandom()
+XCOMM			otherwise, set to empty
+
+RANDOM		= -DHAS_48
+
+XCOMM Set your C compiler like the following example
+
+XCOMM CC	= gcc
+
+XCOMM ############################################################
+
+DEFINES		= -I. -DSCOREFILE=\"${SCOREFILE}\" ${RANDOM}
+SYS_LIBRARIES	= ${XLIB} -lm
+SRCS		= tetris.c playing.c utils.c
+OBJS		= tetris.o playing.o utils.o
+MYPROGRAM	= tetris
+
+ComplexProgramTarget(${MYPROGRAM})
+
+tetris.o: tetris.c tetris.h patchlevel.h
+playing.o: playing.c tetris.h
+utils.o: utils.c tetris.h
+
+clean.all::	clean
+	${RM} Makefile ${SCOREFILE}
+

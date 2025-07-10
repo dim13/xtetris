@@ -1,0 +1,59 @@
+# GENERIC X-WINDOW-BASED TETRIS
+#
+#	Makefile.std
+#
+###
+#
+#  Copyright (C) 1992 - 95              Q. Alex Zhao, azhao@cc.gatech.edu
+#
+#			All Rights Reserved
+#
+#  Permission to use, copy, modify, and distribute this software and
+#  its documentation for any purpose and without fee is hereby granted,
+#  provided that the above copyright notice appear in all copies and
+#  that both that copyright notice and this permission notice appear in
+#  supporting documentation, and that the name of the author not be
+#  used in advertising or publicity pertaining to distribution of the
+#  software without specific, written prior permission.
+#
+#  This program is distributed in the hope that it will be "playable",
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+
+SCOREFILE	= ./tetris.scores
+
+# Set "RANDOM" to:
+#	-DHAS_48	if has lrand48() and srand48()
+#	-DHAS_RANDOM	if has random() and srandom()
+#			otherwise, set to empty
+RANDOM		= -DHAS_48
+
+# Set your C compiler
+CC		= cc
+
+# X include files
+XINCLUDEPATH	= /usr/local/include
+
+# X libraries
+XLIBPATH	= /usr/local/lib
+
+##############################################################
+
+DEFINES		= -I${XINCLUDEPATH} -I. -DSCOREFILE=\"${SCOREFILE}\" ${RANDOM}
+SYS_LIBRARIES	= -lX11 -lm
+SRCS		= tetris.c playing.c utils.c
+OBJS		= tetris.o playing.o utils.o
+MYPROGRAM	= tetris
+
+CFLAGS		= -O ${DEFINES}
+
+${MYPROGRAM}:	${OBJS}
+	${CC} ${CFLAGS} -o ${MYPROGRAM} ${OBJS} -L${XLIBPATH} ${SYS_LIBRARIES}
+
+tetris.o: tetris.c tetris.h
+playing.o: playing.c tetris.h
+utils.o: utils.c tetris.h
+
+clean.all::
+	rm -f Makefile ${SCOREFILE}
