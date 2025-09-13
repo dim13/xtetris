@@ -171,28 +171,28 @@ typedef struct {
 
 /*** variables defined in "tetris.c" ***/
 
-Display *display;
-int      screen_num;
-Visual  *visual;
-Bool     useColor;
-Bool     use3D;
-Colormap colormap;
-Window   mainWin, blockWin;
-Cursor   theCursor;
-XFontStruct *bigFont, *tinyFont;
-unsigned long fg, bg;
+extern Display *display;
+extern int      screen_num;
+extern Visual  *visual;
+extern Bool     useColor;
+extern Bool     use3D;
+extern Colormap colormap;
+extern Window   mainWin, blockWin;
+extern Cursor   theCursor;
+extern XFontStruct *bigFont, *tinyFont;
+extern unsigned long fg, bg;
 
-XSizeHints sizehints, iconsizehints;
-XWMHints wmhints;
+extern XSizeHints sizehints, iconsizehints;
+extern XWMHints wmhints;
 
-char     myHome[FILENAMELEN], scorefile[FILENAMELEN];
-int      startlevel, level, prefilled, score, rows, range, rotOffset;
-Bool     showNext, beep, bonusMode;
-score_t  myscore;
+extern char     myHome[FILENAMELEN], scorefile[FILENAMELEN];
+extern int      startlevel, level, prefilled, score, rows, range, rotOffset;
+extern Bool     showNext, beep, bonusMode;
+extern score_t  myscore;
 
 /*** variables defined in "utils.c" ***/
 
-Atom     delw;
+extern Atom     delw;
 
 /*** variables defined in "playing.c" ***/
 
