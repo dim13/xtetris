@@ -25,6 +25,8 @@
 
 #include	"tetris.h"
 
+#include <X11/keysym.h>
+
 static Bool     paused = False;
 static Bool     firstFall = False;
 
@@ -144,13 +146,25 @@ evGotNewThing(Bool falldown)
 	gotNew = moveOne(FALL) || gotNew;
 
     while (XPending(display)) {
+    KeySym keysym = 0;
 	XNextEvent(display, &ev);
 	flag = True;
 	while (flag) {
 	    switch (ev.type) {
 	    case KeyPress:
-		if (!XLookupString(&ev.xkey, buf, 4, NULL, NULL))
-		    break;
+
+		keysym = XLookupKeysym(&ev.xkey, 0);
+		switch (keysym) {
+		case XK_Left: buf[0] = 'j'; break;
+		case XK_Up: buf[0] = 'k'; break; // ROTATE
+		case XK_Right: buf[0] = 'l'; break;
+		case XK_Down: buf[0] = ' '; break; // DROP
+		default: buf[0] = 0; break;
+        }
+
+		if (buf[0] == 0)
+			if (!XLookupString(&ev.xkey, buf, 4, NULL, NULL))
+				break;
 
 		switch (buf[0]) {
 		case 'j':

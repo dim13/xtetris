@@ -15,6 +15,11 @@ WHY ANOTHER?
 
 HOW TO BUILD?
 
+    Debian/Ubuntu
+    sudo apt install build-essential libx11-dev libxft-dev libxi-dev
+    make -f Makefile.linux
+
+    Old build instructions:
     Edit the Imakefile (or Makefile.std, see below) for appropriate
     settings of variable SCOREFILE and RANDOM, then do:
 	xmkmf
@@ -31,6 +36,7 @@ HOW TO BUILD?
 
 ANYTHING SPECIAL IN PLAYING?
 
+    Use arrows to move left and right; arrow up to rotate; arrow down to drop.
     Use 'j' to move left; 'l' to move right; 'k' to rotate. 
     Left-handed people may want to use 's', 'd', 'f' respectively. 
     Use the space bar to drop a block quickly.  Do you want to try the

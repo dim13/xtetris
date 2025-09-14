@@ -1,0 +1,13 @@
+
+.PHONY: clean
+
+# CFLAGS += -g
+
+PKG_CONFIG_LIST = x11 xft xi
+
+tetris: tetris.c playing.c utils.c
+	pkg-config --cflags --libs $(PKG_CONFIG_LIST)
+	$(CC) -o $@ $^ $(CFLAGS) `pkg-config --cflags --libs $(PKG_CONFIG_LIST)`
+
+clean:
+	$(RM) tetris
